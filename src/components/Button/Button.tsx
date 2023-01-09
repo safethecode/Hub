@@ -4,7 +4,8 @@ import type { MouseEvent } from 'react';
 import { styled } from 'styles/stitches';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  btnType?: 'default' | 'outline';
+  btnType: 'default' | 'outline';
+  fullSize?: boolean;
   icon?: React.ReactNode;
 }
 
@@ -37,6 +38,11 @@ const StyledButton = styled('button', {
         },
       },
     },
+    fullSize: {
+      true: {
+        width: '100%',
+      },
+    },
     disabled: {
       true: {
         color: '$grey400',
@@ -61,7 +67,7 @@ const StyledIcon = styled('div', {
 });
 
 export const Button = memo(
-  ({ onClick, disabled, icon, children, ...rest }: ButtonProps) => {
+  ({ onClick, disabled, fullSize, icon, children, ...rest }: ButtonProps) => {
     const handleClick = useCallback(
       (e: MouseEvent<HTMLButtonElement>) => {
         if (!disabled) {
@@ -71,7 +77,12 @@ export const Button = memo(
       [disabled, onClick],
     );
     return (
-      <StyledButton disabled={disabled} onClick={handleClick} {...rest}>
+      <StyledButton
+        disabled={disabled}
+        fullSize={fullSize}
+        onClick={handleClick}
+        {...rest}
+      >
         {icon && <StyledIcon>{icon}</StyledIcon>}
         {children}
       </StyledButton>
