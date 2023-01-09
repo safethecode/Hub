@@ -3,18 +3,18 @@ import type { MouseEvent } from 'react';
 
 import { styled } from 'styles/stitches';
 
-interface BaseProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   btnType?: 'default' | 'outline';
   icon?: React.ReactNode;
 }
-
-type Props = BaseProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const StyledButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '$2',
+  boxShadow: 'inset 0 0 0 1px $colors$grey300',
+  border: 0,
   padding: '$2 $4',
   transition: 'background-color 0.2s',
   cursor: 'pointer',
@@ -24,7 +24,6 @@ const StyledButton = styled('button', {
       default: {
         color: '$grey700',
         backgroundColor: '$grey100',
-        border: '1px solid $grey300',
         hover: {
           backgroundColor: '$grey200',
         },
@@ -32,7 +31,6 @@ const StyledButton = styled('button', {
       outline: {
         color: '$grey700',
         backgroundColor: '$white',
-        border: '1px solid $grey300',
         hover: {
           backgroundColor: '$grey50',
         },
@@ -42,7 +40,7 @@ const StyledButton = styled('button', {
       true: {
         color: '$grey400',
         backgroundColor: '$white',
-        border: '1px solid $grey100',
+        boxShadow: 'inset 0 0 0 1px $colors$grey100',
         cursor: 'not-allowed',
         hover: {
           backgroundColor: '$grey50',
@@ -62,7 +60,7 @@ const StyledIcon = styled('div', {
 });
 
 export const Button = memo(
-  ({ onClick, disabled, icon, children, ...rest }: Props) => {
+  ({ onClick, disabled, icon, children, ...rest }: ButtonProps) => {
     const handleClick = useCallback(
       (e: MouseEvent<HTMLButtonElement>) => {
         if (!disabled) {
