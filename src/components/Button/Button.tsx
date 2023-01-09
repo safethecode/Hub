@@ -12,12 +12,13 @@ const StyledButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  minWidth: 80,
   borderRadius: '$2',
-  boxShadow: 'inset 0 0 0 1px $colors$grey300',
   border: 0,
+  boxShadow: 'inset 0 0 0 1px $colors$grey300',
   padding: '$2 $4',
-  transition: 'background-color 0.2s',
   cursor: 'pointer',
+  transition: 'background-color 0.2s',
 
   variants: {
     btnType: {
