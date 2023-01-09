@@ -286,7 +286,14 @@ export const {
     hover: (styles: Stitches.CSS) => ({
       '&:hover': {
         ...styles,
-        transition: 'background-color 0.2s',
+        transition: 'background .2s ease, color .1s ease, box-shadow .2s ease;',
+      },
+    }),
+
+    focus: (styles: Stitches.CSS) => ({
+      '&:focus-within': {
+        ...styles,
+        transition: 'background .2s ease, color .1s ease, box-shadow .2s ease;',
       },
     }),
 
