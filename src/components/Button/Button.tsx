@@ -13,7 +13,6 @@ const StyledButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  minWidth: 80,
   borderRadius: '$2',
   border: 0,
   boxShadow: 'inset 0 0 0 1px $colors$grey300',
@@ -62,6 +61,10 @@ const StyledButton = styled('button', {
   },
 });
 
+const ChildrenContainer = styled('div', {
+  width: 'max-content',
+});
+
 const StyledIcon = styled('div', {
   mr: '$1',
 });
@@ -84,7 +87,7 @@ export const Button = memo(
         {...rest}
       >
         {icon && <StyledIcon>{icon}</StyledIcon>}
-        {children}
+        <ChildrenContainer>{children}</ChildrenContainer>
       </StyledButton>
     );
   },
