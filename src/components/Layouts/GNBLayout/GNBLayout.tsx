@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { Header } from 'components/Header';
 import { styled } from 'styles/stitches';
 
 interface GNBLayoutProps {
@@ -11,10 +12,16 @@ const GNB = styled('main', {
   flexDirection: 'column',
   width: '100%',
   height: '100%',
+  maxWidth: '512px',
   flexFlow: 'column nowrap',
   margin: '0 auto',
 });
 
 export const GNBLayout = ({ children }: GNBLayoutProps) => {
-  return <GNB>{children}</GNB>;
+  return (
+    <GNB>
+      <Header />
+      {children}
+    </GNB>
+  );
 };

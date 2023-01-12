@@ -172,7 +172,7 @@ export const {
     },
     fonts: {
       sans: 'Noto Sans KR, sans-serif',
-    }
+    },
   },
   utils: {
     p: (value: Stitches.PropertyValue<'padding'>) => ({
@@ -281,6 +281,20 @@ export const {
     us: (value: Stitches.PropertyValue<'userSelect'>) => ({
       WebkitUserSelect: value,
       userSelect: value,
+    }),
+
+    hover: (styles: Stitches.CSS) => ({
+      '&:hover': {
+        ...styles,
+        transition: 'background .2s ease, color .1s ease, box-shadow .2s ease;',
+      },
+    }),
+
+    focus: (styles: Stitches.CSS) => ({
+      '&:focus-within': {
+        ...styles,
+        transition: 'background .2s ease, color .1s ease, box-shadow .2s ease;',
+      },
     }),
 
     userSelect: (value: Stitches.PropertyValue<'userSelect'>) => ({
